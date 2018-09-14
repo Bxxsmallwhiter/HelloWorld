@@ -1,0 +1,16 @@
+public class B {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String a;
+		String b="ABCD";
+		a=b;
+		b="BCDE";
+		System.out.println(a);
+	}
+
+}
+
+
+E:\>java B
+ABCD
