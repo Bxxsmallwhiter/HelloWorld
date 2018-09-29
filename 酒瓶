@@ -2,7 +2,7 @@
 public class nursery {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int N=100;
 		for(int i=99;i>=0;i--)
 		{
