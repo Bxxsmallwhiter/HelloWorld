@@ -6,7 +6,6 @@ import java.util.List;
 public class TEST {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		List<Integer> list=new ArrayList<>(1);
 		Integer integer=new Integer(10);
 		list.add(integer);
@@ -23,6 +22,6 @@ public class TEST {
 
 }
 
-Êä³ö½á¹û£º
+ÃŠÃ¤Â³Ã¶Â½Ã¡Â¹Ã»Â£Âº
 10,5
 false
