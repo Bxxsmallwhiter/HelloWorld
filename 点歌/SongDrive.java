@@ -6,7 +6,7 @@ public class SongDrive {
 	public static Master master;
 	public static Player player;
 	
-	//³õÊ¼»¯masterºÍplayer
+	//åˆå§‹åŒ–masterå’Œplayer
 	public SongDrive()
 	{
 		master=new Master();
@@ -17,34 +17,34 @@ public class SongDrive {
 	{
 		SongDrive song=new SongDrive();
 		Scanner sc=new Scanner(System.in);
-		System.out.println("ÊäÈë0,1,2,3£º");
-		System.out.println("0£ºÍË³öµã¸è£¬"
-				+ "1£ºµã¸è£¬"
-				+ "2£º²¥·Å¸èÇú,
-				+ "3:  ÍË³öÏµÍ³");
-		//Ñ­»·ÊäÈë
+		System.out.println("è¾“å…¥0,1,2,3ï¼š");
+		System.out.println("0ï¼šé€€å‡ºç‚¹æ­Œï¼Œ"
+				+ "1ï¼šåˆ›å»ºæ­Œå•ï¼Œ"
+				+ "2ï¼šæ’­æ”¾æ­Œæ›²,
+				+ "3:  é€€å‡ºç³»ç»Ÿ");
+		//å¾ªç¯è¾“å…¥
 		int i;
 		do {
-			System.out.print("ÇëÊäÈë£º");
+			System.out.print("è¯·è¾“å…¥ï¼š");
 			i=sc.nextInt();
 		switch(i)
 		{
-		case 0:System.out.println("ÍË³öµã¸è£¡");break;
-		case 1://Ìí¼Ó¸èÇú
+		case 0:System.out.println("é€€å‡ºç‚¹æ­Œï¼");break;
+		case 1://æ·»åŠ æ­Œæ›²
 				player.addsong();
 				master.listsong.add(player.s);
-				System.out.println("Èô¼ÌĞøµã¸èÇë°´1");
+				System.out.println("è‹¥ç»§ç»­ç‚¹æ­Œè¯·æŒ‰1");
 				break;
-		case 2:	//²¥·Å¸èÇú
+		case 2:	//æ’­æ”¾æ­Œæ›²
 				if(!master.play())
 				{
-					System.out.println("µ±Ç°ÁĞ±íÎŞ¸èÇú£¡");
+					System.out.println("å½“å‰åˆ—è¡¨æ— æ­Œæ›²ï¼");
 				}
-				else System.out.println("¼ÌĞø²¥·ÅÇë°´2");
+				else System.out.println("ç»§ç»­æ’­æ”¾è¯·æŒ‰2");
 				break;
-		case 3:break;//ÍË³ö
+		case 3:break;//é€€å‡º
 			default:
-			System.out.println("ERROR£¡");break;
+			System.out.println("ERRORï¼");break;
 		}
 		}while(i!=3);
 	}
