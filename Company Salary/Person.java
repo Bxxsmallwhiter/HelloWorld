@@ -6,39 +6,39 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Person {
-	public String name;//¶¨ÒåĞÕÃû
-	public double salary;//¶¨Òå¹¤×Ê
-	public Calendar birthday;//¶¨ÒåÉúÈÕ
+	public String name;//å®šä¹‰å§“å
+	public double salary;//å®šä¹‰å·¥èµ„
+	public Calendar birthday;//å®šä¹‰ç”Ÿæ—¥
 
 	public Person()
 	{
 		/*
-		 * ´´½¨Ëæ»úĞÕÃû
-		 * ĞÕÓÉname1Ëæ»úÉú³É
-		 * ÃûÓÉname2Ëæ»úÉú³É
+		 * åˆ›å»ºéšæœºå§“å
+		 * å§“ç”±name1éšæœºç”Ÿæˆ
+		 * åç”±name2éšæœºç”Ÿæˆ
 		 */
-		String[] name1= {"ÕÔ","Ç®","Ëï","Àî","ÖÜ","Îâ","Ö£","Íõ"};
-		String[] name2= {"Ìì","µØ","É½","Ë®","ĞÁ","ÑÒ","Ã¯","Æ÷"};
+		String[] name1= {"èµµ","é’±","å­™","æ","å‘¨","å´","éƒ‘","ç‹"};
+		String[] name2= {"å¤©","åœ°","å±±","æ°´","è¾›","å²©","èŒ‚","å™¨"};
 		List<String> name1List=new ArrayList<>(Arrays.asList(name1));
 		List<String> name2List=new ArrayList<>(Arrays.asList(name2));
-		//Ëæ»ú´Óname1³éÈ¡ĞÕ£¬´Óname2³éÈ¡Ãû
+		//éšæœºä»name1æŠ½å–å§“ï¼Œä»name2æŠ½å–å
 		name=name1List.get((int)(Math.random()*8))+name2List.get((int)(Math.random()*8));
 	}
 	
 	/*
-	 * Ëæ»ú´´½¨ÉúÈÕ
+	 * éšæœºåˆ›å»ºç”Ÿæ—¥
 	 */
 	public String Birth()
 	{
-		birthday=Calendar.getInstance();//´´½¨Ò»¸öÈÕÀú
-		int year=birthday.get(Calendar.YEAR)-(int)(Math.random()*35+20);//ÄêÁä³öÉú=´Óµ±Ç°Äê·İ-[20~40)Ëæ»úÊı
-		int month=(int)(Math.random()*12+1);//Ëæ»ú12ÔÂ
-		int day=(int)(Math.random()*30+1);//Ëæ»ú30Ìì
+		birthday=Calendar.getInstance();//åˆ›å»ºä¸€ä¸ªæ—¥å†
+		int year=birthday.get(Calendar.YEAR)-(int)(Math.random()*35+20);//å¹´é¾„å‡ºç”Ÿ=ä»å½“å‰å¹´ä»½-[20~75)éšæœºæ•°
+		int month=(int)(Math.random()*12+1);//éšæœº12æœˆ
+		int day=(int)(Math.random()*30+1);//éšæœº30å¤©
 		birthday.set(year, month,day);
-		return year+"Äê"+month+"ÔÂ"+day+"ÈÕ";
+		return year+"å¹´"+month+"æœˆ"+day+"æ—¥";
 	}
 
-	// ÅĞ¶Ïµ±ÔÂÊÇ·ñÊÇ´ËÈËµÄÉúÈÕ
+	// åˆ¤æ–­å½“æœˆæ˜¯å¦æ˜¯æ­¤äººçš„ç”Ÿæ—¥
 	public boolean isBirthday() 
 	{
 		Calendar calendar = Calendar.getInstance();
@@ -46,17 +46,17 @@ public class Person {
 	}
 
 	/*
-	 * ÅĞ¶Ïµ±ÔÂÊÇ·ñÎªÉúÈÕ£¬Èç¹ûÊÇ£¬Ôò¸ø³öÏàÓ¦µÄ½±Àø
-	 * 				 Èç¹û²»ÊÇ£¬ÔòÃ»ÓĞ½±Àø
+	 * åˆ¤æ–­å½“æœˆæ˜¯å¦ä¸ºç”Ÿæ—¥ï¼Œå¦‚æœæ˜¯ï¼Œåˆ™ç»™å‡ºç›¸åº”çš„å¥–åŠ±
+	 * 				 å¦‚æœä¸æ˜¯ï¼Œåˆ™æ²¡æœ‰å¥–åŠ±
 	 */
 	public String persent()
 	{
 		if(isBirthday())
 		{
-			String[] persent= {"´øĞ½ĞİÒ»ÖÜ","¹¤×Ê+5%","ÈıÈÕÂÃÓÎ","ÉúÈÕÀñ°ü"};
+			String[] persent= {"å¸¦è–ªä¼‘ä¸€å‘¨","å·¥èµ„+5%","ä¸‰æ—¥æ—…æ¸¸","ç”Ÿæ—¥ç¤¼åŒ…"};
 			List<String> persents=new ArrayList<>(Arrays.asList(persent));
-			return "µ±ÔÂÎªÔ±¹¤ÉúÈÕ£¬½±Àø£º"+persents.get((int)(Math.random()*4));
+			return "å½“æœˆä¸ºå‘˜å·¥ç”Ÿæ—¥ï¼Œå¥–åŠ±ï¼š"+persents.get((int)(Math.random()*4));
 		}
-		else return "µ±ÔÂ²»ÎªÉúÈÕ£¬Ã»ÓĞ½±Àø";
+		else return "å½“æœˆä¸ä¸ºç”Ÿæ—¥ï¼Œæ²¡æœ‰å¥–åŠ±";
 	}
 }
