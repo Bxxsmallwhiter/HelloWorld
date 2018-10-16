@@ -6,24 +6,24 @@ import java.util.Set;
 
 public class Company {
 
-	public HashSet<Staff> staffSet;//´´½¨Ô±¹¤¼¯ºÏ
-	public HashSet<Manager> managerSet;//´´½¨¾­Àí¼¯ºÏ
-	public HashSet<SH> SHSet;//´´½¨¹É¶«¼¯ºÏ
+	public HashSet<Staff> staffSet;//åˆ›å»ºå‘˜å·¥é›†åˆ
+	public HashSet<Manager> managerSet;//åˆ›å»ºç»ç†é›†åˆ
+	public HashSet<SH> SHSet;//åˆ›å»ºè‚¡ä¸œé›†åˆ
 	
-	//³õÊ¼»¯Ô±¹¤£¬¾­Àí£¬¹É¶«
+	//åˆå§‹åŒ–å‘˜å·¥ï¼Œç»ç†ï¼Œè‚¡ä¸œ
 	public Company() 
 	{
-		this(5,2,1);//Ä¬ÈÏ5Î»Ô±¹¤£¬2Î»¾­Àí£¬1Î»¹É¶«
+		this(5,2,1);//é»˜è®¤5ä½å‘˜å·¥ï¼Œ2ä½ç»ç†ï¼Œ1ä½è‚¡ä¸œ
 	}
 	
 	public Company(int snum,int mnum,int shnum) 
 	{
-		staffSet = createStaff(snum);//³õÊ¼»¯´´½¨Ô±¹¤¼¯ºÏ
-		managerSet = createManager(mnum);//³õÊ¼»¯´´½¨¾­Àí¼¯ºÏ
-		SHSet = createSH(shnum);//³õÊ¼»¯´´½¨¹É¶«¼¯ºÏ
+		staffSet = createStaff(snum);//åˆå§‹åŒ–åˆ›å»ºå‘˜å·¥é›†åˆ
+		managerSet = createManager(mnum);//åˆå§‹åŒ–åˆ›å»ºç»ç†é›†åˆ
+		SHSet = createSH(shnum);//åˆå§‹åŒ–åˆ›å»ºè‚¡ä¸œé›†åˆ
 	}
 
-	// Éú³ÉÔ±¹¤
+	// ç”Ÿæˆå‘˜å·¥
 	private HashSet<Staff> createStaff(int num) 
 	{
 		Set<Staff> setStaff = new HashSet<>();
@@ -34,7 +34,7 @@ public class Company {
 		return (HashSet<Staff>) setStaff;
 	}
 
-	// Éú³É¾­Àí
+	// ç”Ÿæˆç»ç†
 	private HashSet<Manager> createManager(int num) 
 	{
 		Set<Manager> setManager = new HashSet<>();
@@ -44,38 +44,17 @@ public class Company {
 		}
 		return (HashSet<Manager>) setManager;
 	}
-
-	// Éú³É¹É¶«
-	private HashSet<SH> createSH(int num) 
-	{
-		//¹«Ë¾ÀûÈó=¹«Ë¾ÓªÒµ¶î-¹«Ë¾¶ÔÔ±¹¤¾­Àí¹¤×ÊÖ§³ö
-		Salary.profit = Salary.turnover - Company.AllPay(staffSet, managerSet);
-		Set<SH> setShareHolder = new HashSet<>();
-		//¹«Ë¾×Ü¹É·İ
-		int shareAll = 100;
-		//¸øÇ°num-1¸ö¹É¶«Í¨¹ıËæ»úÊı¸ø¸÷¹É¶«¹É·İ
-		while (setShareHolder.size() < num-1) 
-		{
-			int shares = (int)(Math.random()*(shareAll - 10)) + 10;
-			shareAll = shareAll - shares;
-			setShareHolder.add(new SH(shares));
-		}
-		//×îºóÒ»¸ö¹É¶«µÄ¹É·İÎªÊ£ÏÂµÄ¹É·İ
-		setShareHolder.add(new SH(shareAll));
-		shareAll = 0;
-		return (HashSet<SH>) setShareHolder;
-	}
 	
-	//¼ÆËã¹«Ë¾Ö§³öÔ±¹¤¾­Àí¹¤×Ê
+	//è®¡ç®—å…¬å¸æ”¯å‡ºå‘˜å·¥ç»ç†å·¥èµ„
 	public static double AllPay(HashSet<Staff> setStaff,HashSet<Manager> setManager) 
 	{
 		double sum = 0;
-		//¼ÆËãÔ±¹¤¹¤×Ê
+		//è®¡ç®—å‘˜å·¥å·¥èµ„
 		for(Staff staff:setStaff) 
 		{
 			sum = sum + staff.salary*12;
 		}
-		//¼ÆËã¾­Àí¹¤×Ê¼°½±½ğ
+		//è®¡ç®—ç»ç†å·¥èµ„åŠå¥–é‡‘
 		for(Manager manager:setManager)
 		{
 			sum=sum+(manager.salary+manager.bouns)*12;
@@ -83,7 +62,30 @@ public class Company {
 		return sum;
 	}
 
-	//ÏÔÊ¾Ô±¹¤ĞÅÏ¢
+
+	// ç”Ÿæˆè‚¡ä¸œ
+	private HashSet<SH> createSH(int num) 
+	{
+		//å…¬å¸åˆ©æ¶¦=å…¬å¸è¥ä¸šé¢-å…¬å¸å¯¹å‘˜å·¥ç»ç†å·¥èµ„æ”¯å‡º
+		Salary.profit = Salary.turnover - Company.AllPay(staffSet, managerSet);
+		Set<SH> setShareHolder = new HashSet<>();
+		//å…¬å¸æ€»è‚¡ä»½
+		int shareAll = 100;
+		//ç»™å‰num-1ä¸ªè‚¡ä¸œé€šè¿‡éšæœºæ•°ç»™å„è‚¡ä¸œè‚¡ä»½
+		while (setShareHolder.size() < num-1) 
+		{
+			int shares = (int)(Math.random()*(shareAll - 10)) + 10;
+			shareAll = shareAll - shares;
+			setShareHolder.add(new SH(shares));
+		}
+		//æœ€åä¸€ä¸ªè‚¡ä¸œçš„è‚¡ä»½ä¸ºå‰©ä¸‹çš„è‚¡ä»½
+		setShareHolder.add(new SH(shareAll));
+		shareAll = 0;
+		return (HashSet<SH>) setShareHolder;
+	}
+	
+
+	//æ˜¾ç¤ºå‘˜å·¥ä¿¡æ¯
 	public void StaffprintInfo() 
 	{
 		for(Staff staff:staffSet) 
@@ -92,7 +94,7 @@ public class Company {
 		}
 	}
 	
-	//ÏÔÊ¾¾­ÀíĞÅÏ¢
+	//æ˜¾ç¤ºç»ç†ä¿¡æ¯
 	public void ManagerprintInfo() 
 	{
 		for(Manager manager:managerSet) 
@@ -101,7 +103,7 @@ public class Company {
 		}
 	}
 	
-	//ÏÔÊ¾¹É¶«ĞÅÏ¢
+	//æ˜¾ç¤ºè‚¡ä¸œä¿¡æ¯
 	public void ShareHolderprintInfo() 
 	{
 		for(SH shareHolder:SHSet) 
