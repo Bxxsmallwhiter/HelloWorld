@@ -34,7 +34,7 @@ public class Person {
 		int year=birthday.get(Calendar.YEAR)-(int)(Math.random()*35+20);//年龄出生=从当前年份-[20~75)随机数
 		int month=(int)(Math.random()*12+1);//随机12月
 		int day=(int)(Math.random()*30+1);//随机30天
-		birthday.set(year, month,day);
+		birthday.set(year, month,day);//传递birthday的年月日
 		return year+"年"+month+"月"+day+"日";
 	}
 
@@ -42,7 +42,7 @@ public class Person {
 	public boolean isBirthday() 
 	{
 		Calendar calendar = Calendar.getInstance();
-		return (birthday.get(birthday.MONTH) == calendar.MONTH);
+		return (birthday.get(birthday.MONTH) == calendar.MONTH);//返回当月是否为生日
 	}
 
 	/*
